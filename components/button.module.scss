@@ -1,0 +1,10 @@
+.btn {
+    background-color: green;
+    &.primary {
+        background-color: black;
+    }
+    &.secondary {
+        background-color: pink;
+    }
+
+}
