@@ -8,12 +8,12 @@ return <div>
 
   <h1>Homepage</h1>
   <Button 
-    label ="Register Now" 
-    type type="primary"
+    label = "Register Now" 
+    type ="primary"
     />
   <Button 
-    label ="Download Now" 
-    type type="secondary"
+    label = "Download Now" 
+    type = "secondary"
     />
   <Button label ="Learn More" />
 </div>
