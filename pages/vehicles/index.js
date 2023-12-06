@@ -16,7 +16,7 @@ export async function getStaticProps() {
 }
 const VehiclesPage = ({ vehicles }) => {
     return <Layout>
-        <h1>Vehicles</h1>
+        <h1> All Vehicles</h1>
         <Container>
             <Grid>
                 {vehicles.map((vehicle, index) => {
