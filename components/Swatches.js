@@ -2,19 +2,17 @@ import styles from './swatches.module.scss';
 
 const Swatches = ({ 
     changeHandler,
-    data
+    data 
 }) => {
-
-    return <ul className={styles.swatch_list}>
+    return <ul className={styles.swatch__list}>
         {data.map((item) => {
             return <li 
-                className={styles.swatch_item}
-                style={{ backgroundColor: item.hex}}
+                className={styles.swatch__item}
+                style={{ backgroundColor: item.hex }}
                 onClick={() => {
                     changeHandler(item);
                 }}
             >
-        
             </li>
         })}
     </ul>

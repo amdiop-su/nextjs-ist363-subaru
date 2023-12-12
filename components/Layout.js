@@ -3,12 +3,12 @@ import Footer from './Footer';
 import Header from './Header';
 
 const Layout = ({ children }) => {
-    return  <Fragment>
+    return <Fragment>
         <Header />
         <main>
             {children}
         </main>
         <Footer />
     </Fragment>
-} 
+}
 export default Layout;

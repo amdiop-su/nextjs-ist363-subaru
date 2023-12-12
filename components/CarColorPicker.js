@@ -38,27 +38,27 @@ const colors = [
       slug: 'sapphire-blue-pearl',
       hex: '#00306d'
     }
-  ];
+];
   
 
 const CarColorPicker = () => {
     // [state variable, set state function]
-const [activeColor, setActiveColor] = useState(colors[0]);
+    const [activeColor, setActiveColor] = useState(colors[0]);
 
     return <section>
-        <div
-            style={{ backgroundColor : activeColor.hex }}
+        <div 
+            style={{ backgroundColor : activeColor.hex}}
         >
             <Image 
-            src={`/images/impreza-${activeColor.slug}.webp`}
-            alt={`Subaru Impreza ${activeColor.name}`}
-            width={1150}
-            height={607}
-        />
+                src={`/images/impreza-${activeColor.slug}.webp`}
+                alt={`Subaru Imreza ${activeColor.name}`}
+                width={1150}
+                height={607}
+            />
         </div>
         <Swatches 
             data={colors} 
-            changeHandler={setActiveColor}
+            changeHandler={setActiveColor} 
         />
         <h3>{activeColor.name}</h3>
     </section>

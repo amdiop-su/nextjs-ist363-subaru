@@ -30,7 +30,7 @@ export async function getStaticProps({ params }) {
 }
 // 3. page component
 const SingleVehiclePage = ({ vehicleData }) => {
-    const { title, featuredImage } = vehicleData;
+    const { title, slug, featuredImage } = vehicleData;
     return <Layout>
         <h1>{title}</h1>
         {featuredImage &&
