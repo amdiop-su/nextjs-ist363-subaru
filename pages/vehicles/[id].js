@@ -1,46 +1,82 @@
+import ColorPicker from '../../components/ColorPicker';
+import Container from '../../components/Container';
+import Head from 'next/head';
+import Heading from '../../components/Heading';
 import Image from 'next/image';
-import Layout from '../../components/Layout';
-import { getVehicleBySlug, getAllVehicleSlugs } from '../../lib/api';
+import Layout from "../../components/Layout";
+import {getVehicleBySlug, getAllVehicleSlugs} from '../../lib/api';
+import Showcase from '../../components/Showcase';
+import TrimPicker from '../../components/TrimPicker';
 
-// WATERFALL
-// 1. getStaticPaths
+import {getDrivingLocations} from '../../lib/locations';
+
+
+
 export async function getStaticPaths() {
     const vehicles = await getAllVehicleSlugs();
     const paths = vehicles.map((vehicle) => {
-        const { slug } = vehicle.node;
-        return {
-            params: {
-                id: slug
+        const{slug} = vehicle.node
+
+        return{
+            params:{
+                id:slug
             }
         }
     });
-    return {
+
+
+
+    return{
         paths,
-        fallback: false
+        fallback:false
     }
 }
-// 2. getStaticProps
-export async function getStaticProps({ params }) {
+
+
+export async function getStaticProps({params}) {
     const vehicleData = await getVehicleBySlug(params.id);
-    return {
-        props : {
-            vehicleData
+    const drivingLocations = getDrivingLocations();
+    return{
+        props:{
+            vehicleData,
+            drivingLocations
         }
     }
 }
-// 3. page component
-const SingleVehiclePage = ({ vehicleData }) => {
-    const { title, slug, featuredImage } = vehicleData;
+
+
+
+const SingleVehiclePage = ({vehicleData, drivingLocations}) => {
+    const {title, slug, featuredImage, vehicleInformation} = vehicleData;
+    const {headline}= vehicleInformation.showcase;
+    const{trimLevels, vehicleColors} = vehicleInformation;
     return <Layout>
-        <h1>{title}</h1>
-        {featuredImage &&
-            <Image 
-                src={featuredImage.node.sourceUrl}
-                alt={featuredImage.node.altText}
-                width={featuredImage.node.mediaDetails.width}
-                height={featuredImage.node.mediaDetails.height}
-            />
-        }
+        <Head>
+            <title>
+                {title} | Subaru USA | Abdoulaye
+            </title>
+        </Head>
+        <Showcase 
+            subtitle={title}
+            title={headline}
+            featuredImage={featuredImage}
+        />
+        <div id="main-content">
+            <Container>
+                <TrimPicker trims={trimLevels} locations={drivingLocations} />
+                <ColorPicker 
+                    colors={vehicleColors}
+                
+                />
+            </Container>  
+        </div>
+        
+
+        
+
     </Layout>
-}
+}       
+
 export default SingleVehiclePage;
+
+//<Heading level={1} textAlign="center" marginBottom={2} >{title}</Heading>//

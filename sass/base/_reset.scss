@@ -1,14 +1,18 @@
-h1, h2, h3, h4, h5, h6, p, body, ul, li {
-    margin: 0;
-    padding: 0;
-    font: inherit;
+h1,h2,h3,h4,h5,h6,p,body,ul,li{
+    margin:0;
+    padding:0;
+    font:inherit;
 }
-ul, li {
-    list-style: none; /* removes bullets */
+ul,li{
+    list-style:none;
 }
-* {
-    box-sizing: border-box; /* invert padding */
+*{
+    box-sizing: border-box;
 }
-img {
-    vertical-align: top; /* removes white space below image */
+img{
+    vertical-align: top;
+}
+button {
+    border:0;
+    background-color: transparent;
 }
